@@ -6,48 +6,99 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="329.0" prefWidth="505.0" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="com.lunaltas.demo.HelloController">
+<VBox alignment="CENTER" fillWidth="false" prefHeight="800.0" prefWidth="1200.0" spacing="20.0" style="-fx-background-color: #d8dce3;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lunaltas.demo.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-    <Label fx:id="welcomeText" text="Lista de Usuários" />
-   <HBox prefHeight="100.0" prefWidth="200.0">
+    <Label fx:id="welcomeText" text="Painel de Monitoramento Corporativo">
+      <font>
+         <Font name="System Bold" size="20.0" />
+      </font></Label>
+   <HBox alignment="TOP_CENTER" prefHeight="172.0" prefWidth="1160.0" spacing="15.0">
       <children>
-         <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+         <VBox prefHeight="258.0" prefWidth="376.0" spacing="20.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 5; -fx-border-color: darkgrey; -fx-border-width: 2; -fx-border-radius: 5;">
             <children>
-               <Label text="Nome" />
-               <TextField fx:id="inputName">
-                  <VBox.margin>
-                     <Insets right="5.0" />
-                  </VBox.margin>
-               </TextField>
+               <VBox prefHeight="0.0" prefWidth="344.0" style="-fx-background-color: #FFFFFF;">
+                  <children>
+                     <Label text="Nome">
+                        <font>
+                           <Font name="System Bold" size="15.0" />
+                        </font>
+                     </Label>
+                     <TextField fx:id="inputName" prefHeight="0.0" prefWidth="339.0">
+                        <VBox.margin>
+                           <Insets right="20.0" />
+                        </VBox.margin>
+                     </TextField>
+                  </children>
+               </VBox>
+               <VBox prefHeight="0.0" prefWidth="344.0">
+                  <children>
+                     <Label text="E-mail">
+                        <font>
+                           <Font name="System Bold" size="15.0" />
+                        </font>
+                     </Label>
+                     <TextField fx:id="inputEmail" prefHeight="25.0" prefWidth="261.0">
+                        <VBox.margin>
+                           <Insets right="20.0" />
+                        </VBox.margin>
+                     </TextField>
+                  </children>
+               </VBox>
+               <HBox prefHeight="46.0" prefWidth="340.0" spacing="15.0">
+                  <children>
+                     <VBox prefHeight="46.0" prefWidth="160.0">
+                        <children>
+                           <Label text="Peso (kg)">
+                              <font>
+                                 <Font name="System Bold" size="15.0" />
+                              </font>
+                           </Label>
+                           <TextField fx:id="txtPeso" prefHeight="25.0" prefWidth="148.0" />
+                        </children>
+                     </VBox>
+                     <VBox prefHeight="46.0" prefWidth="160.0">
+                        <children>
+                           <Label text="Altura (m)">
+                              <font>
+                                 <Font name="System Bold" size="15.0" />
+                              </font>
+                           </Label>
+                           <TextField fx:id="txtAltura" prefHeight="25.0" prefWidth="108.0" />
+                        </children>
+                     </VBox>
+                  </children>
+               </HBox>
+                <Button onAction="#onHelloButtonClick" prefHeight="30.0" prefWidth="331.0" style="-fx-background-color: #1e7afa; -fx-background-radius: 5; -fx-border-width: 2; -fx-border-radius: 5; -fx-border-color: #0d64de;" text="ADICIONAR E CALCULAR IMC" textFill="WHITE">
+                  <font>
+                     <Font name="System Bold" size="13.0" />
+                  </font>
+               </Button>
             </children>
+            <padding>
+               <Insets left="20.0" top="10.0" />
+            </padding>
          </VBox>
-         <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
-            <children>
-               <Label text="E-mail" />
-               <TextField fx:id="inputEmail">
-                  <VBox.margin>
-                     <Insets right="5.0" />
-                  </VBox.margin>
-               </TextField>
-            </children>
-         </VBox>
-          <Button onAction="#onHelloButtonClick" text="Atualizar" HBox.hgrow="ALWAYS">
-            <HBox.margin>
-               <Insets top="18.0" />
-            </HBox.margin>
-         </Button>
+         <ImageView fitHeight="260.0" fitWidth="459.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@imagens/imagem.jpg" />
+            </image>
+         </ImageView>
       </children>
    </HBox>
-   <TableView fx:id="tabela" prefHeight="200.0" prefWidth="200.0">
+   <TableView fx:id="tabela" prefHeight="208.0" prefWidth="861.0">
      <columns>
-       <TableColumn fx:id="colNome" prefWidth="218.0" text="C1" />
-       <TableColumn fx:id="colEmail" prefWidth="244.0" text="C2" />
+       <TableColumn fx:id="colNome" prefWidth="287.0" resizable="false" sortable="false" text="C1" />
+       <TableColumn fx:id="colEmail" prefWidth="287.0" resizable="false" sortable="false" text="C2" />
+         <TableColumn fx:id="colIMC" prefWidth="287.0" resizable="false" sortable="false" text="C3" />
      </columns>
    </TableView>
 </VBox>

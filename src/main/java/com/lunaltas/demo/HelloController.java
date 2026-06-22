@@ -17,36 +17,51 @@ public class HelloController {
     @FXML private TableView tabela;
     @FXML private TableColumn colNome;
     @FXML private TableColumn colEmail;
+    @FXML private TableColumn colIMC;
     @FXML private TextField inputName;
     @FXML private TextField inputEmail;
-    ObservableList lista;
+    @FXML private TextField txtPeso;
+    @FXML private TextField txtAltura;
+    @FXML private ObservableList lista;
 
-    @FXML
-    public void initialize() {
-        // Liga a coluna "Nome" ao atributo "nome" da classe Usuario
+    @FXML public double calcularIMC() {
+        double peso = Double.parseDouble(
+                txtPeso.getText()
+        );
+        double altura = Double.parseDouble(
+                txtAltura.getText()
+        );
+
+        double imc = peso / (altura * altura);
+
+        return imc;
+    }
+
+    @FXML public void initialize() {
         colNome.setCellValueFactory(
                 new PropertyValueFactory<>("nome")
         );
-
-        // Liga a coluna "Email" ao atributo "email"
         colEmail.setCellValueFactory(
                 new PropertyValueFactory<>("email")
         );
-
-        // Cria a lista observável e joga na tabela
+        colIMC.setCellValueFactory(
+                new PropertyValueFactory<>("imc")
+        );
         lista = FXCollections.observableArrayList(
-                new Usuario("Maria", "maria@email.com"),
-                new Usuario("João", "joao@email.com")
+                new Usuario("Maria", "maria@email.com", 21.4),
+                new Usuario("João", "joao@email.com", 24.5)
         );
         tabela.setItems(lista);
         colEmail.setText("E-mail");
         colNome.setText("Nome");
+        colIMC.setText("IMC");
     }
 
     @FXML
     protected void onHelloButtonClick() {
         String name = inputName.getText();
         String email = inputEmail.getText();
-        lista.add(new Usuario(name, email));
+        double imc = calcularIMC();
+        lista.add(new Usuario(name, email, imc));
     }
 }
