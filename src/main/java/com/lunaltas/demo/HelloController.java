@@ -34,7 +34,7 @@ public class HelloController {
 
         double imc = peso / (altura * altura);
 
-        return imc;
+        return Math.round(imc * 100.0) / 100.0;
     }
 
     @FXML public void initialize() {
